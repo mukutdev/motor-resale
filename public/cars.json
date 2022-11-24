@@ -1,0 +1,110 @@
+[
+    {
+        "carName" : "Mercedes-Benz GLE-Class",
+        "img": "https://i.ibb.co/SKJ4KXj/p2.jpg",
+        "location":"Dhaka",
+        "description" : "Very Good Conditions",
+        "condition":"Good",
+        "sellerNo":"+8801867416781",
+        "Availability":"available",
+        "category":"Mercedes-Benz",
+        "originalPrice"  : 80900,
+        "salePrice" : 50800,
+        "used" : "4 Years",
+        "pubDate":"24 nov 2022",
+        "seller" : "John",
+        "verified" : "Yes",
+        "advertised" : "yes"
+
+    },
+    {
+        "carName" : "Mercedes-Benz GL-Class",
+        "img": "https://i.ibb.co/PM0mK0K/p3.jpg",
+        "location":"Rajshahi",
+        "description" : "Excellent Conditions",
+        "condition":"Excellent",
+        "sellerNo":"+8801867416781",
+        "Availability":"available",
+        "category":"Mercedes-Benz",
+        "originalPrice"  : 70900,
+        "salePrice" : 54800,
+        "uses" : "2 Years",
+        "pubDate":"24 nov 2022",
+        "seller" : "John",
+        "verified" : "yes",
+        "advertised" : "yes"
+
+    },
+    {
+        "carName" : "Nissan Pathfinder",
+        "img": "https://i.ibb.co/Pzs4Mjb/p28.jpg",
+        "location":"Chittagong",
+        "description" : "Fair Conditions",
+        "condition":"Fair",
+        "sellerNo":"+8801867416782",
+        "Availability":"sold",
+        "category":"Nissan",
+        "originalPrice"  : 30900,
+        "salePrice" : 14800,
+        "uses" : "3 Years",
+        "pubDate":"24 nov 2022",
+        "seller" : "Smith",
+        "verified" : "no",
+        "advertised" : "yes"
+
+    },
+    {
+        "carName" : "2022 Nissan Sentra®",
+        "img": "https://i.ibb.co/3yJ05cs/08-png-ximg-c1h-360.png",
+        "location":"Sylhet",
+        "description" : "Good Conditions",
+        "condition":"Good",
+        "sellerNo":"+8801867416782",
+        "Availability":"available",
+        "category":"Nissan",
+        "originalPrice"  : 90900,
+        "salePrice" : 84800,
+        "uses" : "1 Years",
+        "pubDate":"24 nov 2022",
+        "seller" : "Smith",
+        "verified" : "no",
+        "advertised" : "no"
+
+    },
+    {
+        "carName" : "Audi Q5",
+        "img": "https://i.ibb.co/4MhvrKQ/p8.jpg",
+        "location":"Khulna",
+        "description" : "Excellent Conditions",
+        "condition":"Excellent",
+        "sellerNo":"+8801867416782",
+        "Availability":"available",
+        "category":"Audi",
+        "originalPrice"  : 76900,
+        "salePrice" : 64800,
+        "uses" : "5 Years",
+        "pubDate":"24 nov 2022",
+        "seller" : "Devjoy",
+        "verified" : "no",
+        "advertised" : "no"
+
+    },
+    {
+        "carName" : "Audi Q6",
+        "img": "https://i.ibb.co/7C17HKj/p12.jpg",
+        "location":"Benapol",
+        "description" : "Fair Conditions",
+        "condition":"Fair",
+        "sellerNo":"+8801867416782",
+        "Availability":"available",
+        "category":"Audi",
+        "originalPrice"  : 46900,
+        "salePrice" : 34800,
+        "uses" : "6 Years",
+        "pubDate":"24 nov 2022",
+        "seller" : "Devjoy",
+        "verified" : "no",
+        "advertised" : "no"
+
+    }
+]

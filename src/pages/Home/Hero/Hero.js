@@ -10,7 +10,6 @@ const Hero = () => {
       <p className="py-6 text-white text-xl">Buy Second Hand Car at reasonable Price !</p>
       <button className="btn btn-primary px-6 text-xl text-white">Get Started</button>
     </div>
-  
 </div>
     );
 };
