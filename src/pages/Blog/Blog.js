@@ -5,8 +5,8 @@ const Blog = () => {
   return (
     <section>
       <BgElement content="Blogs"></BgElement>
-      <div className="container mx-auto my-36">
-        <div className="w-1/2 mx-auto shadow-md p-8 rounded-md">
+      <div className="container mx-auto md:my-36">
+        <div className="md:w-1/2 mx-auto shadow-md p-8 rounded-md">
           <div
             tabIndex={0}
             className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
