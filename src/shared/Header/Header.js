@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 const Header = () => {
 
     const menuItems = <>
-        <li><Link className='text-xl mx-2 rounded-lg font-medium  hover:bg-orange-600 hover:text-white' to={'/'}>Home</Link></li>
-        <li><Link className='text-xl  mx-2 rounded-lg font-medium  hover:bg-orange-600 hover:text-white' to={'/blogs'}>Blogs</Link></li>
-        <li><Link className='text-xl mx-2 rounded-lg font-medium  hover:bg-orange-600 hover:text-white' to={'/login'}>Login</Link></li>
+        <li><Link className='text-xl mx-2 rounded-lg font-medium  hover:bg-primary hover:text-white' to={'/'}>Home</Link></li>
+        <li><Link className='text-xl  mx-2 rounded-lg font-medium  hover:bg-primary hover:text-white' to={'/blogs'}>Blogs</Link></li>
+        <li><Link className='text-xl mx-2 rounded-lg font-medium  hover:bg-primary hover:text-white' to={'/login'}>Login</Link></li>
     </>
     return (
-        <div className="navbar bg-base-100 justify-between">
+        <div className="navbar  container mx-auto bg-base-100 justify-between">
    <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
