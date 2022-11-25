@@ -1,6 +1,5 @@
 import React from 'react';
 import { BsGearFill , BsFillTrophyFill} from 'react-icons/bs';
-// import { BiUserCheck } from 'react-icons/bi';
 import { FaCar , FaUserTie } from 'react-icons/fa';
 
 const About = () => {
@@ -18,8 +17,8 @@ const About = () => {
 
     return (
         <section className='my-14 container mx-auto'>
-            <div className='flex justify-between w-5/6 mx-auto items-center'>
-                    <div className='w-1/2'>
+            <div className='md:flex justify-between md:w-5/6 mx-auto items-center'>
+                    <div className='md:w-1/2 md:px-0 px-4'>
                         <h2 className='text-3xl font-bold'>ABOUT COMPANY</h2>
                         <div className='h-2 w-14 mt-2 bg-slate-800'></div>
                         <p className='text-xl my-4'>There are many variations of passages of Lorem Ipsum typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
@@ -42,22 +41,12 @@ const About = () => {
                                             )
                                         })
                                     }
-                                  {/* <div className='flex justify-between gap-7 '>
-                                    
-                                        <div className='bg-slate-800 h-24 flex w-1/3'>
-                                            <BsGearFill className='text-white text-3xl m-auto'/>
-                                        </div>
-                                        <div className='h-24 w-2/3'>
-                                            <h2 className='text-2xl font-bold'>WE'RE EXPERTS</h2>
-                                            <p className='pt-2 text-lg'>There are many variations of passages of Lorem Ipsum</p>
-                                        </div>
-                                  </div>   */}
-                                   
+                             
                             </div>
                         </div>
                     </div>
                     <div>
-                            <img className='h-[600px]' src="https://i.ibb.co/r0hFVs4/worker.png" alt="" />
+                            <img className='md:h-[600px] h-96 mx-auto' src="https://i.ibb.co/r0hFVs4/worker.png" alt="" />
                     </div>
             </div>
         </section>
