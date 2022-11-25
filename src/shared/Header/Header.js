@@ -25,6 +25,7 @@ const Header = () => {
       </li>
      {
        user?.uid ? <>
+       <li><Link to={'/dashboard'} className="text-xl mx-2 rounded-lg font-medium">Dashboard</Link></li>
         <li><Link className="text-xl mx-2 rounded-lg font-medium">Hello, {user?.displayName}</Link></li>
          <button className="btn bg-yellow-400 hover:bg-yellow-500 text-black border-0" onClick={()=> handleUserLogout()}>Logout</button> 
        </> :  <li>
@@ -76,6 +77,22 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
+      <label  htmlFor="dashboardDrawer" tabIndex={1} className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
     </div>
   );
 };
