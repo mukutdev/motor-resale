@@ -12,7 +12,7 @@ const Login = () => {
 
     const handleUserSubmit = data =>{
         console.log(data);
-        
+
         // email and password based login
         handleSignInWithEmailAndPassword(data.email, data.password)
         .then(result =>{
@@ -31,10 +31,25 @@ const Login = () => {
         .then(result =>{
           toast.success('User logged in successfully')
           const user = result.user
+          saveUserToDb(user.displayName, user.email )
           console.log(user);
           navigate('/')
         })
         .catch(err => console.log(err))
+    }
+
+    const saveUserToDb = (name , email)=>{
+      const user = {name , email , accountMode : 'buyer' , verified : false}
+      fetch('http://localhost:5000/users', {
+        method : 'POST',
+        headers : { 'Content-Type': 'application/json'},
+        body: JSON.stringify(user)
+      })
+      .then(res => res.json())
+      .then(data =>{
+        console.log(data);
+      })
+      .catch(err => console.log(err))
     }
     
 
