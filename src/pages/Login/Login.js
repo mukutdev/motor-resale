@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthProvider } from '../../context/AuthConText';
 import toast from 'react-hot-toast';
@@ -8,17 +8,36 @@ import toast from 'react-hot-toast';
 const Login = () => {
     const {register , handleSubmit , formState: { errors }} = useForm()
     const {handleSignInWithEmailAndPassword , handleGoogleLogin} = useContext(AuthProvider)
+    const navigate = useNavigate()
 
     const handleUserSubmit = data =>{
         console.log(data);
+
+        // email and password based login
         handleSignInWithEmailAndPassword(data.email, data.password)
         .then(result =>{
           const user = result.user
           toast.success('User logged in successfully')
           console.log(user);
+          navigate('/')
         })
         .catch(err => console.log(err))
     }
+
+    //google login function
+
+    const handleLoginUsingGoogle = ()=>{
+        handleGoogleLogin()
+        .then(result =>{
+          toast.success('User logged in successfully')
+          const user = result.user
+          console.log(user);
+          navigate('/')
+        })
+        .catch(err => console.log(err))
+    }
+    
+
     return (
         <section className="bg-slate-600 h-screen">
       <div className="absolute h-full flex flex-col justify-center items-center left-0 right-0 top-0 bottom-0">
@@ -61,7 +80,7 @@ const Login = () => {
              <p className="font-medium text-center">New User ? <Link to={'/register'} className="underline text-lg font-semibold"> Create a account!</Link></p>
              <div className="divider">OR</div>
              
-             <button className='flex items-center justify-center bg-slate-600 hover:bg-slate-500 w-full py-3 text-white text-xl'><FcGoogle className='text-xl mr-2'></FcGoogle> Login using Google</button>
+             <button onClick={handleLoginUsingGoogle} className='flex items-center justify-center bg-slate-600 hover:bg-slate-500 w-full py-3 text-white text-xl'><FcGoogle className='text-xl mr-2'></FcGoogle> Login using Google</button>
           </div>
         </div>
       </div>
