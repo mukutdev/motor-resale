@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import app from '../firebase/firebase.config';
 
 export const AuthProvider = createContext() 
@@ -18,7 +18,7 @@ const AuthConText = ({children}) => {
     //email password based authentication
 
     const handleCreateUser = (email , password) => {
-        loading(true)
+        setLoading(true)
         return createUserWithEmailAndPassword(auth , email, password)
     }
 
@@ -34,6 +34,13 @@ const AuthConText = ({children}) => {
         return signOut(auth)
     }
 
+     //handleUpdateProfile
+      
+     const handleUpdateProfile = (userInfo)=>{
+
+        return updateProfile(auth.currentUser , userInfo)
+
+    }
 
     //watching user movement function
 
@@ -49,12 +56,11 @@ const AuthConText = ({children}) => {
     } ,[])
 
     
-    //handleUpdateProfile
-        
+   
 
 
 
-    const authInfo = {user , handleCreateUser , loading , handleUserLogout , handleGoogleLogin }
+    const authInfo = {user , handleCreateUser , loading , handleUserLogout , handleGoogleLogin , handleUpdateProfile }
 
     return (
         <AuthProvider.Provider value={authInfo}>

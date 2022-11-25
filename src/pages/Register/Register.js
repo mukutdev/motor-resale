@@ -1,13 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthProvider } from "../../context/AuthConText";
 
 const Register = () => {
 
+    const {handleCreateUser , handleUpdateProfile} = useContext(AuthProvider)
     const {register , handleSubmit , formState: { errors }} = useForm()
+    const navigate = useNavigate()
 
     const handleUserSubmit = data =>{
         console.log(data);
+
+        //email password based account creation
+
+        handleCreateUser(data.email , data.password)
+        .then(result =>{
+          const user = result.user
+          const userInfo = {
+            displayName : user.displayName
+          }
+          toast.success('Your account has been created')
+          // updateProfile 
+           handleUpdateProfile(userInfo)
+           .then(()=>{
+              navigate('/')
+           })
+           .catch(err => console.log(err))
+
+          console.log(user);
+        })
+        .catch(err => console.log(err))
     }
 
   return (
