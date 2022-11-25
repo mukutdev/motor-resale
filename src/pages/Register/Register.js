@@ -19,7 +19,7 @@ const Register = () => {
         .then(result =>{
           const user = result.user
           const userInfo = {
-            displayName : user.displayName
+            displayName : data.name
           }
           toast.success('Your account has been created')
           // updateProfile 

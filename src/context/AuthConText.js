@@ -1,72 +1,83 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
-import app from '../firebase/firebase.config';
+import React, { createContext, useEffect, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+import app from "../firebase/firebase.config";
 
-export const AuthProvider = createContext() 
+export const AuthProvider = createContext();
 
+const auth = getAuth(app);
 
-const auth = getAuth(app)
+const AuthConText = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-const AuthConText = ({children}) => {
+  const googleProvider = new GoogleAuthProvider();
 
-    const [user , setUser] = useState(null)
-    const [loading , setLoading] = useState(true)
+  //email password based authentication
 
-    const googleProvider = new GoogleAuthProvider()
+  const handleCreateUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
+  //sign in with email and password
 
-    //email password based authentication
+  const handleSignInWithEmailAndPassword = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  //google login based authentication
 
-    const handleCreateUser = (email , password) => {
-        setLoading(true)
-        return createUserWithEmailAndPassword(auth , email, password)
-    }
+  const handleGoogleLogin = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
 
-    //google login based authentication
+  //useLogout function
 
-    const handleGoogleLogin = ()=>{
-        return signInWithPopup(auth , googleProvider)
-    }
+  const handleUserLogout = () => {
+    signOut(auth)
+      .then(() => {})
+      .catch(err => console.log(err));
+  };
 
-    //useLogout function
+  //handleUpdateProfile
 
-    const handleUserLogout = () => {
-        return signOut(auth)
-    }
+  const handleUpdateProfile = userInfo => {
+    return updateProfile(auth.currentUser, userInfo);
+  };
 
-     //handleUpdateProfile
-      
-     const handleUpdateProfile = (userInfo)=>{
+  //watching user movement function
 
-        return updateProfile(auth.currentUser , userInfo)
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+      setUser(currentUser);
+      setLoading(false);
+    });
 
-    }
+    return () => unsubscribe();
+  }, []);
 
-    //watching user movement function
+  const authInfo = {
+    user,
+    handleCreateUser,
+    loading,
+    handleUserLogout,
+    handleGoogleLogin,
+    handleUpdateProfile,
+    handleSignInWithEmailAndPassword
+  };
 
-    useEffect(()=>{
-
-        const unsubscribe = onAuthStateChanged(auth ,currentUser =>{
-            setUser(currentUser)
-            setLoading(false)
-        })
-
-        return ()=> unsubscribe()
-
-    } ,[])
-
-    
-   
-
-
-
-    const authInfo = {user , handleCreateUser , loading , handleUserLogout , handleGoogleLogin , handleUpdateProfile }
-
-    return (
-        <AuthProvider.Provider value={authInfo}>
-            {children}
-        </AuthProvider.Provider>
-    );
+  return (
+    <AuthProvider.Provider value={authInfo}>{children}</AuthProvider.Provider>
+  );
 };
 
 export default AuthConText;
