@@ -1,6 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../../pages/Blog/Blog";
+import AddProduct from "../../pages/Dashboard/AddProduct/AddProduct";
+import AllBuyers from "../../pages/Dashboard/AllBuyers/AllBuyers";
+import AllSellers from "../../pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
+import MyOrders from "../../pages/Dashboard/MyOrders/MyOrders";
+import ReportedItems from "../../pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
@@ -40,7 +45,27 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard',
                 element : <Dashboard/>
-            }
+            },
+            {
+                path:'/dashboard/myorders',
+                element : <MyOrders/>
+            },
+            {
+                path:'/dashboard/allsellers',
+                element : <AllSellers/>
+            },
+            {
+                path:'/dashboard/allbuyers',
+                element : <AllBuyers/>
+            },
+            {
+                path:'/dashboard/addproduct',
+                element : <AddProduct/>
+            },
+            {
+                path:'/dashboard/report',
+                element : <ReportedItems/>
+            },
         ]
     },
     

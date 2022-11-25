@@ -1,9 +1,10 @@
 import React from 'react';
+import MyOrders from '../MyOrders/MyOrders';
 
 const Dashboard = () => {
     return (
         <div>
-            this is dashboard
+            <MyOrders></MyOrders>
         </div>
     );
 };
