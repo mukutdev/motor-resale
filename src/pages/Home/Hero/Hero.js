@@ -7,7 +7,7 @@ const Hero = () => {
       <h4 className="text-xl font-bold text-white">Top Brands Cars </h4>
       <h1 className="md:text-6xl text-4xl mt-4 font-bold text-white">Modern - Classic - Incredible</h1>
       <p className="py-6 text-white text-xl">Buy Second Hand Car at reasonable Price !</p>
-      <button className="btn btn-primary px-6 text-xl text-white">Get Started</button>
+      <button className="btn bg-yellow-400 px-6 text-xl text-white">Get Started</button>
     </div>
 </div>
 

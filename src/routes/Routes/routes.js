@@ -20,14 +20,14 @@ export const router = createBrowserRouter([
                 path:'/blogs',
                 element:<Blog/>  
             },
-            {
-                path:'/login',
-                element:<Login/>
-            },
-            {
-                path:'/register',
-                element:<Register/>
-            }
         ]
+    },
+    {
+        path:'/login',
+        element:<Login/>
+    },
+    {
+        path:'/register',
+        element:<Register/>
     }
 ])

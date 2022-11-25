@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const Header = () => {
 
     const menuItems = <>
-        <li><Link className='text-xl mx-2 rounded-lg font-medium  hover:bg-primary hover:text-white' to={'/'}>Home</Link></li>
-        <li><Link className='text-xl  mx-2 rounded-lg font-medium  hover:bg-primary hover:text-white' to={'/blogs'}>Blogs</Link></li>
-        <li><Link className='text-xl mx-2 rounded-lg font-medium  hover:bg-primary hover:text-white' to={'/login'}>Login</Link></li>
+        <li><Link className='text-xl mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white' to={'/'}>Home</Link></li>
+        <li><Link className='text-xl  mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white' to={'/blogs'}>Blogs</Link></li>
+        <li><Link className='text-xl mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white' to={'/login'}>Login</Link></li>
     </>
     return (
         <div className="navbar  container mx-auto bg-base-100 justify-between">
@@ -19,7 +19,7 @@ const Header = () => {
         {menuItems}
       </ul>
     </div>
-    <Link to={'/'} className="text-2xl font-bold ">Reseller</Link>
+    <Link to={'/'} className="text-2xl font-bold "><img src="https://i.ibb.co/Vpp9J31/logo-auto-parts.png" className="h-7" alt="" /></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
