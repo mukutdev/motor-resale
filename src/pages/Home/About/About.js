@@ -7,11 +7,11 @@ const About = () => {
     const companyFeatures = [
         {id :1,name : `WE'RE EXPERTS`,des : 'There are many variations of passages of Lorem Ipsum',icon : <BsGearFill className='text-white text-3xl m-auto'/>
         },
-        {id :1,name : `WE'RE FRIENDLY`,des : 'There are many variations of passages of Lorem Ipsum',icon : <FaUserTie className='text-white text-3xl m-auto'/>
+        {id :2,name : `WE'RE FRIENDLY`,des : 'There are many variations of passages of Lorem Ipsum',icon : <FaUserTie className='text-white text-3xl m-auto'/>
         },
-        {id :1,name : `WE'RE ACCURATE`,des : 'There are many variations of passages of Lorem Ipsum',icon : <FaCar className='text-white text-3xl m-auto'/>
+        {id :3,name : `WE'RE ACCURATE`,des : 'There are many variations of passages of Lorem Ipsum',icon : <FaCar className='text-white text-3xl m-auto'/>
         },
-        {id :1,name : `WE'RE TRUSTED`,des : 'There are many variations of passages of Lorem Ipsum',icon : <BsFillTrophyFill className='text-white text-3xl m-auto'/>
+        {id :4,name : `WE'RE TRUSTED`,des : 'There are many variations of passages of Lorem Ipsum',icon : <BsFillTrophyFill className='text-white text-3xl m-auto'/>
         },
     ]
 
