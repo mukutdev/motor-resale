@@ -12,7 +12,7 @@ const Login = () => {
 
     const handleUserSubmit = data =>{
         console.log(data);
-
+        
         // email and password based login
         handleSignInWithEmailAndPassword(data.email, data.password)
         .then(result =>{
