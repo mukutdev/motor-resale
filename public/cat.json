@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Mercedes-Benz",
+        "catId" : "637f95669789df96bf37080b",
+        "catImg": "https://i.ibb.co/SKJ4KXj/p2.jpg"
+    },
+    {
+        "name": "Nissan",
+        "catId" : "637f95669789df96bf37080c",
+        "catImg": "https://i.ibb.co/Pzs4Mjb/p28.jpg"
+    },
+    {
+        "name": "Audi",
+        "catId" : "637f95669789df96bf37080d",
+        "catImg": "https://i.ibb.co/4MhvrKQ/p8.jpg"
+    }
+]

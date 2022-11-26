@@ -8,14 +8,14 @@
         "sellerNo":"+8801867416781",
         "Availability":"available",
         "category":"Mercedes-Benz",
+        "categoryId" : "637f95669789df96bf37080b",
         "originalPrice"  : 80900,
         "salePrice" : 50800,
         "used" : "4 Years",
         "pubDate":"24 nov 2022",
         "seller" : "John",
-        "verified" : "Yes",
-        "advertised" : "yes"
-
+        "verified" : true,
+        "advertised" : false
     },
     {
         "carName" : "Mercedes-Benz GL-Class",
@@ -26,13 +26,14 @@
         "sellerNo":"+8801867416781",
         "Availability":"available",
         "category":"Mercedes-Benz",
+        "categoryId" : "637f95669789df96bf37080b",
         "originalPrice"  : 70900,
         "salePrice" : 54800,
         "uses" : "2 Years",
         "pubDate":"24 nov 2022",
         "seller" : "John",
-        "verified" : "yes",
-        "advertised" : "yes"
+        "verified" : true,
+        "advertised" : false
 
     },
     {
@@ -44,13 +45,14 @@
         "sellerNo":"+8801867416782",
         "Availability":"sold",
         "category":"Nissan",
+        "categoryId" : "637f95669789df96bf37080c",
         "originalPrice"  : 30900,
         "salePrice" : 14800,
         "uses" : "3 Years",
         "pubDate":"24 nov 2022",
         "seller" : "Smith",
-        "verified" : "no",
-        "advertised" : "yes"
+        "verified" : false,
+        "advertised" : false
 
     },
     {
@@ -62,13 +64,14 @@
         "sellerNo":"+8801867416782",
         "Availability":"available",
         "category":"Nissan",
+        "categoryId" : "637f95669789df96bf37080c",
         "originalPrice"  : 90900,
         "salePrice" : 84800,
         "uses" : "1 Years",
         "pubDate":"24 nov 2022",
         "seller" : "Smith",
-        "verified" : "no",
-        "advertised" : "no"
+        "verified" : false,
+        "advertised" : false
 
     },
     {
@@ -80,13 +83,14 @@
         "sellerNo":"+8801867416782",
         "Availability":"available",
         "category":"Audi",
+        "categoryId" : "637f95669789df96bf37080d",
         "originalPrice"  : 76900,
         "salePrice" : 64800,
         "uses" : "5 Years",
         "pubDate":"24 nov 2022",
         "seller" : "Devjoy",
-        "verified" : "no",
-        "advertised" : "no"
+        "verified" : false,
+        "advertised" : false
 
     },
     {
@@ -98,13 +102,14 @@
         "sellerNo":"+8801867416782",
         "Availability":"available",
         "category":"Audi",
+        "categoryId" : "637f95669789df96bf37080d",
         "originalPrice"  : 46900,
         "salePrice" : 34800,
         "uses" : "6 Years",
         "pubDate":"24 nov 2022",
         "seller" : "Devjoy",
-        "verified" : "no",
-        "advertised" : "no"
+        "verified" : false,
+        "advertised" : false
 
     }
 ]

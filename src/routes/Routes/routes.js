@@ -12,6 +12,7 @@ import Register from "../../pages/Register/Register";
 import DashboardLayout from "../../shared/DashboardLayout/DashboardLayout";
 import ErrorPage from "../../shared/ErrorPage/ErrorPage";
 import Main from "../../shared/Main/Main";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -48,23 +49,23 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/dashboard/myorders',
-                element : <MyOrders/>
+                element : <AdminRoute><MyOrders/></AdminRoute>
             },
             {
                 path:'/dashboard/allsellers',
-                element : <AllSellers/>
+                element : <AdminRoute><AllSellers/></AdminRoute>
             },
             {
                 path:'/dashboard/allbuyers',
-                element : <AllBuyers/>
+                element : <AdminRoute><AllBuyers/></AdminRoute>
             },
             {
                 path:'/dashboard/addproduct',
-                element : <AddProduct/>
+                element : <AdminRoute><AddProduct/></AdminRoute>
             },
             {
                 path:'/dashboard/report',
-                element : <ReportedItems/>
+                element : <AdminRoute><ReportedItems/></AdminRoute>
             },
         ]
     },
