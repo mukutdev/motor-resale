@@ -15,6 +15,7 @@ const CategoryCard = ({ category }) => {
           >
             See All Cars
           </Link>
+         
         </div>
       </div>
     </div>

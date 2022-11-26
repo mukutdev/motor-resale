@@ -7,7 +7,7 @@ import Header from "../Header/Header";
 const DashboardLayout = () => {
   const {user} = useContext(AuthProvider)  
   const [userLevel ] = useAdmin(user?.email)
-  console.log(userLevel);
+  // console.log(userLevel);
 
 
   return (
