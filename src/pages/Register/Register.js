@@ -91,7 +91,7 @@ const Register = () => {
             />
             {errors.name && <span className="text-red-500">Please enter your name</span>}
             <input
-              type="text"
+              type="email"
               placeholder="Enter Your Email"
               {...register("email" , { required: true })}
               className="border-0 w-full outline-none bg-gray-300 px-3 py-3 mt-3 text-slate-900 placeholder-gray-500"

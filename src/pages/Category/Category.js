@@ -3,7 +3,6 @@ import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import BgElement from '../../shared/BgElement/BgElement';
 import SingleCar from '../../shared/SingleCar/SingleCar';
-import Spinner from '../../shared/Spinner/Spinner';
 import BookingModal from '../Home/Categories/BookingModal/BookingModal';
 
 const Category = () => {
@@ -12,17 +11,17 @@ const Category = () => {
 
     const [carData , setCarData] = useState({})
 
-    const {data : cars , isLoading} = useQuery({
+    const {data : cars = [] , isLoading , refetch} = useQuery({
         queryKey : ['categories'],
         queryFn : async ()=>{
             const res = await fetch(`${process.env.REACT_APP_url}/categories/${id}`)
-            const data = res.json()
+            const data = await res.json()
             return data
         }
     })
 
     if(isLoading){
-        return <Spinner></Spinner>
+        return <h2>Loading.......</h2>
     }
 
     return (
@@ -34,7 +33,7 @@ const Category = () => {
                 cars.map(car => <SingleCar key={car._id} carInfo={car} setCarData={setCarData}></SingleCar>)
             }
             </div>
-            <BookingModal carData={carData}/>
+            <BookingModal carData={carData} setCarData={setCarData} refetch={refetch}/>
             </div>
            
         </section>

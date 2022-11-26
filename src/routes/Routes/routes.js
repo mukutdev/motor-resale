@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/category/:id',
-                element:<Category/>  
+                element:<PrivateRoute><Category/></PrivateRoute>
             },
         ]
     },

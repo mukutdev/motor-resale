@@ -5,6 +5,9 @@ import { BsCalendarDate } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
 
 const SingleCar = ({ carInfo , setCarData }) => {
+
+    
+
   const {
     carName,
     img,

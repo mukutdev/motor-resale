@@ -15,7 +15,7 @@ const Categories = () => {
     })
 
     if(isLoading){
-        return <Spinner></Spinner>
+        return <h2>Loading........</h2>
     }
 
 
