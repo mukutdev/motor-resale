@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import BgElement from '../../shared/BgElement/BgElement';
 import SingleCar from '../../shared/SingleCar/SingleCar';
+import Spinner from '../../shared/Spinner/Spinner';
 
 const Category = () => {
     
@@ -13,14 +14,14 @@ const Category = () => {
     const {data : cars , isLoading} = useQuery({
         queryKey : ['categories'],
         queryFn : async ()=>{
-            const res = await fetch(`http://localhost:5000/categories/${id}`)
+            const res = await fetch(`${process.env.REACT_APP_url}/categories/${id}`)
             const data = res.json()
             return data
         }
     })
 
     if(isLoading){
-        return <h2>Loading data.......</h2>
+        return <Spinner></Spinner>
     }
 
     return (

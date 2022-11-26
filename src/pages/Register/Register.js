@@ -1,14 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../context/AuthConText";
+import { useToken } from "../../Hooks/useToken";
 
 const Register = () => {
 
     const {handleCreateUser , handleUpdateProfile} = useContext(AuthProvider)
     const {register , handleSubmit , formState: { errors }} = useForm()
     const navigate = useNavigate()
+    const [createdEmail , setCreatedEmail] = useState('')
+    const [token] = useToken(createdEmail)
+
+
+    if(token){
+      navigate('/')
+    }
 
     const handleUserSubmit = data =>{
         console.log(data);
@@ -26,7 +34,6 @@ const Register = () => {
            handleUpdateProfile(userInfo)
            .then(()=>{
             saveUserToDb(data.name , data.email , data.accountMode)
-              navigate('/')
            })
            .catch(err => console.log(err))
 
@@ -37,17 +44,23 @@ const Register = () => {
 
     const saveUserToDb = (name , email , accountMode )=>{
       const user = {name , email , accountMode , verified : false}
-      fetch('http://localhost:5000/users', {
-        method : 'POST',
+      fetch(`${process.env.REACT_APP_url}/users/${email}`, {
+        method : 'PUT',
         headers : { 'Content-Type': 'application/json'},
         body: JSON.stringify(user)
       })
       .then(res => res.json())
       .then(data =>{
         console.log(data);
+        setCreatedEmail(email)
       })
       .catch(err => console.log(err))
     }
+
+
+    //jwt token creation
+
+
 
   return (
     <section className="bg-slate-600 h-screen">

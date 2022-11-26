@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthConText from './context/AuthConText';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { SpinnerCircular } from 'spinners-react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -15,6 +16,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
     <AuthConText>
       <App />
+      <SpinnerCircular />
     </AuthConText>
     </QueryClientProvider>
     

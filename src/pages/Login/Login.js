@@ -1,16 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthProvider } from '../../context/AuthConText';
 import toast from 'react-hot-toast';
+import { useToken } from '../../Hooks/useToken';
 
 const Login = () => {
     const {register , handleSubmit , formState: { errors }} = useForm()
     const {handleSignInWithEmailAndPassword , handleGoogleLogin} = useContext(AuthProvider)
     const location = useLocation()
     const navigate = useNavigate()
+    const [createdEmail , setCreatedEmail] = useState('')
+    const [token] = useToken(createdEmail)
+
     const from = location.state?.from?.pathname || '/'
+
+    if(token){
+      navigate(from , {replace : true})
+    }
 
     const handleUserSubmit = data =>{
         console.log(data);
@@ -20,8 +28,8 @@ const Login = () => {
         .then(result =>{
           const user = result.user
           toast.success('User logged in successfully')
+          setCreatedEmail(data.email)
           console.log(user);
-          navigate(from , {replace : true})
         })
         .catch(err => console.log(err))
     }
@@ -35,21 +43,21 @@ const Login = () => {
           const user = result.user
           saveUserToDb(user.displayName, user.email )
           console.log(user);
-          navigate('/')
         })
         .catch(err => console.log(err))
     }
 
     const saveUserToDb = (name , email)=>{
       const user = {name , email , accountMode : 'buyer' , verified : false}
-      fetch('http://localhost:5000/users', {
-        method : 'POST',
+      fetch(`${process.env.REACT_APP_url}/users/${email}`, {
+        method : 'PUT',
         headers : { 'Content-Type': 'application/json'},
         body: JSON.stringify(user)
       })
       .then(res => res.json())
       .then(data =>{
         console.log(data);
+        setCreatedEmail(email)
       })
       .catch(err => console.log(err))
     }

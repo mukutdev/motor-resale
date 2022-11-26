@@ -7,12 +7,13 @@ export const useAdmin = email =>{
     const [isAdminLoading , setIsAdminLoading] = useState(true)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/role/${email}`)
+        fetch(`${process.env.REACT_APP_url}/users/role/${email}`)
           .then(res => res.json())
           .then(data => {
+            console.log(data);
             setUserLevel(data);
             setIsAdminLoading(false)
-            console.log(data);
+            // console.log(data);
           });
       }, [email]);
     

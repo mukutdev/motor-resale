@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import Spinner from '../../../shared/Spinner/Spinner';
 import CategoryCard from './CategoryCard/CategoryCard';
 
 const Categories = () => {
@@ -7,14 +8,14 @@ const Categories = () => {
     const {data : category = [] , isLoading} = useQuery({
         queryKey :['categories'],
         queryFn : async ()=>{
-            const res = await fetch('http://localhost:5000/categories')
+            const res = await fetch(`${process.env.REACT_APP_url}/categories`)
             const data = res.json(); 
             return data
         }
     })
 
     if(isLoading){
-        return <h2>Loading data.......</h2>
+        return <Spinner></Spinner>
     }
 
 
