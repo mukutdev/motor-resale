@@ -71,9 +71,6 @@ const MyProduct = () => {
 
     fetch(`${process.env.REACT_APP_url}/allCars/${id}`,{
       method : "DELETE",
-      headers :{
-        authorization : `bearer ${localStorage.getItem("resaleToken")}`
-      }
     })
     .then(res => res.json())
     .then(data =>{
