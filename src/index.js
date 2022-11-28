@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthConText from './context/AuthConText';
 import { QueryClient, QueryClientProvider } from 'react-query';
+const axios = require('axios');
+
 // import { SpinnerCircular } from 'spinners-react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

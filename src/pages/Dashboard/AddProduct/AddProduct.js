@@ -4,17 +4,27 @@ import { AuthProvider } from "../../../context/AuthConText";
 import { format } from 'date-fns'
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useAdmin } from "../../../Hooks/useAdmin";
 
 const AddProduct = () => {
     const {user} = useContext(AuthProvider)
-
     const navigate = useNavigate()
+
+    const [userLevel] = useAdmin(user?.email)
+
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  if (Object.keys(userLevel).length === 0) {
+    return;
+  }
+  if (userLevel.accountMode !== "seller") {
+    return navigate("/");
+  }
 
   const imgKey = process.env.REACT_APP_imgBB
 
@@ -53,7 +63,8 @@ const AddProduct = () => {
                 pubDate : date,
                 category : data.category.split(" ")[0],
                 categoryId : data.category.split(" ")[1],
-                img : img.data.url
+                img : img.data.url,
+                email : user?.email
              
             }
             fetch(`${process.env.REACT_APP_url}/allcars` , {
