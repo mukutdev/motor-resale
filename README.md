@@ -31,7 +31,7 @@ https://car-service-4dd38.web.app/
 **Database:** MongoDb
 
 ## Admin login details
-https://car-service-4dd38.web.app/login
+https://car-service-4dd38.web.app/login , <br>
 
-adminEmail : admin@resale.com
+adminEmail : admin@resale.com <br>
 adminPassword : 123456
