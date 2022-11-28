@@ -33,5 +33,5 @@ https://car-service-4dd38.web.app/
 ## Admin login details
 https://car-service-4dd38.web.app/login
 
-email : admin@resale.com
-password : 123456
+adminEmail : admin@resale.com
+adminPassword : 123456
