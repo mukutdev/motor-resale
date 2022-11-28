@@ -1,11 +1,10 @@
-import React  from 'react';
-import toast from 'react-hot-toast';
-import { BsTrash } from 'react-icons/bs';
-import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
+import React from "react";
+import toast from "react-hot-toast";
+import { BsTrash } from "react-icons/bs";
+import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 
 const AllBuyers = () => {
-
   // const [deleteBuyer , setDeleteBuyer] = useState(null)
 
   const {
@@ -15,34 +14,32 @@ const AllBuyers = () => {
   } = useQuery({
     queryKey: ["buyers"],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_url}/buyers`,{
-        headers :{
-            authorization: `bearer ${localStorage.getItem('resaleToken')}`
-        }
+      const res = await fetch(`${process.env.REACT_APP_url}/buyers`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("resaleToken")}`,
+        },
       });
       const data = res.json();
       return data;
     },
   });
 
-  const deletebuyer = id=>{
-
-
+  const deletebuyer = id => {
     console.log(id);
-    fetch(`http://localhost:5000/buyers/${id}` ,{
-      method : 'DELETE',
-      headers :{
-        authorization : `bearer ${localStorage.getItem('resaleToken')}`
-      }
+    fetch(`${process.env.REACT_APP_url}/buyers/${id}`, {
+      method: "DELETE",
     })
-    .then(res => res.json())
-    .then(data =>{
-      if(data.deletedCount > 0){
-        toast.success('Buyer Deleted successfully')
-      }
-      console.log(data);
-    })
-  }
+      .then(res => res.json())
+      .then(data => {
+        if(data.deletedCount) {
+          console.log(data);
+          toast.success("Buyer Deleted successfully");
+          refetch();
+        }
+        console.log(data);
+      })
+      .catch(err => console.log(err));
+  };
 
   return (
     <section className="mt-10 md:mx-16 mx-2">
@@ -70,11 +67,14 @@ const AllBuyers = () => {
                       <td className="font-semibold text-xl">{buyer.name}</td>
                       <td className="font-semibold text-xl">{buyer.email}</td>
                       <td>
-                      <div
+                        <div
                           className="tooltip tooltip-right"
                           data-tip="Delete buyer"
                         >
-                          <button onClick={()=> deletebuyer(buyer._id)} className="h-10 w-10 mx-auto rounded-full bg-red-500 text-white">
+                          <button
+                            onClick={() => deletebuyer(buyer?._id)}
+                            className="h-10 w-10 mx-auto rounded-full bg-red-500 text-white"
+                          >
                             <BsTrash className="mx-auto" />
                           </button>
                           {/* <label onClick={de}  htmlFor="confirmModal" className="btn">Delete</label> */}
@@ -103,7 +103,6 @@ const AllBuyers = () => {
             className="btn border-0 rounded-md flex justify-center btn-primary my-5"
             to={"/"}
           >
-            
             Back To Home
           </Link>
         </div>

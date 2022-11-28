@@ -50,7 +50,11 @@ const AllSellers = () => {
     })
     .then(res => res.json())
     .then(data =>{
+      if(data.deletedCount){
         console.log(data);
+        toast.success('Seller Deleted successfully')
+        refetch()
+      }
     })
     console.log(id);
   }
