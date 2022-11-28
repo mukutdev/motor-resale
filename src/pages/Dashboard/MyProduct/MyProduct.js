@@ -67,6 +67,25 @@ const MyProduct = () => {
     return navigate("/");
   }
 
+  const deleteCar = id => {
+
+    fetch(`${process.env.REACT_APP_url}/allCars/${id}`,{
+      method : "DELETE",
+      headers :{
+        authorization : `bearer ${localStorage.getItem("resaleToken")}`
+      }
+    })
+    .then(res => res.json())
+    .then(data =>{
+      if(data.deletedCount) {
+        console.log(data);
+        toast.success("Product Deleted successfully");
+        refetch();
+      }
+    })
+    console.log(id);
+  }
+
   return (
     <section className="mt-10 md:mx-16 mx-2">
       {products.length > 0 ? (
@@ -133,7 +152,7 @@ const MyProduct = () => {
                           className="tooltip tooltip-right"
                           data-tip="Delete"
                         >
-                          <button className="h-10 w-10 mx-auto rounded-full bg-red-500 text-white">
+                          <button onClick={()=> deleteCar(product._id)} className="h-10 w-10 mx-auto rounded-full bg-red-500 text-white">
                             <BsTrash className="mx-auto" />
                           </button>
                         </div>
