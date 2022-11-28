@@ -12,6 +12,7 @@ const Register = () => {
     const navigate = useNavigate()
     const [createdEmail , setCreatedEmail] = useState('')
     const [token] = useToken(createdEmail)
+    const [errorMessage , setErrorMessage] = useState('')
 
 
     if(token){
@@ -39,7 +40,9 @@ const Register = () => {
 
           console.log(user);
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          setErrorMessage(err.message)
+        })
     }
 
     const saveUserToDb = (name , email , accountMode )=>{
@@ -132,6 +135,7 @@ const Register = () => {
              
              <input type="submit" value="Create Your Account"  className="w-full bg-yellow-400 hover:bg-yellow-500 cursor-pointer py-3 mt-4 font-semibold text-xl"/>
           </form>
+           <p className="text-red-500 font-medium text-lg my-3">{errorMessage}</p>
           <div className="mt-4">
              <p className="font-medium">Already have an account ? <Link to={'/login'} className="underline text-lg font-semibold"> Login Now !</Link></p>
           </div>

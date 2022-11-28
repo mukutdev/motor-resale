@@ -1,9 +1,13 @@
-import React from 'react';
+import React  from 'react';
+import toast from 'react-hot-toast';
 import { BsTrash } from 'react-icons/bs';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 
 const AllBuyers = () => {
+
+  // const [deleteBuyer , setDeleteBuyer] = useState(null)
+
   const {
     data: buyers = [],
     isLoading,
@@ -22,7 +26,22 @@ const AllBuyers = () => {
   });
 
   const deletebuyer = id=>{
+
+
     console.log(id);
+    fetch(`http://localhost:5000/buyers/${id}` ,{
+      method : 'DELETE',
+      headers :{
+        authorization : `bearer ${localStorage.getItem('resaleToken')}`
+      }
+    })
+    .then(res => res.json())
+    .then(data =>{
+      if(data.deletedCount > 0){
+        toast.success('Buyer Deleted successfully')
+      }
+      console.log(data);
+    })
   }
 
   return (
@@ -50,11 +69,6 @@ const AllBuyers = () => {
                       <th>{i + 1}</th>
                       <td className="font-semibold text-xl">{buyer.name}</td>
                       <td className="font-semibold text-xl">{buyer.email}</td>
-                      {/* <td className="font-semibold text-xl">
-                       {
-                        buyer?.verified ? <button className="btn btn-primary border-0 rounded-sm text-slate-700 bg-yellow-400 hover:bg-yellow-400">Verified</button> : <button className="btn bg-indigo-600 hover:bg-yellow-400  btn-xs text-white rounded-sm border-none">Verify</button>
-                       }
-                      </td> */}
                       <td>
                       <div
                           className="tooltip tooltip-right"
@@ -63,6 +77,7 @@ const AllBuyers = () => {
                           <button onClick={()=> deletebuyer(buyer._id)} className="h-10 w-10 mx-auto rounded-full bg-red-500 text-white">
                             <BsTrash className="mx-auto" />
                           </button>
+                          {/* <label onClick={de}  htmlFor="confirmModal" className="btn">Delete</label> */}
                         </div>
                       </td>
                     </tr>

@@ -13,6 +13,7 @@ const Login = () => {
     const navigate = useNavigate()
     const [createdEmail , setCreatedEmail] = useState('')
     const [token] = useToken(createdEmail)
+    const [errorMessage , setErrorMessage] = useState('')
 
     const from = location.state?.from?.pathname || '/'
 
@@ -31,7 +32,9 @@ const Login = () => {
           setCreatedEmail(data.email)
           console.log(user);
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          setErrorMessage(err.message)
+        })
     }
 
     //google login function
@@ -101,6 +104,7 @@ const Login = () => {
             {errors.password && <span className="text-red-500">Please enter correct password</span>}     
              <input type="submit" value="Login"  className="w-full bg-yellow-400 hover:bg-yellow-500 cursor-pointer py-3 mt-4 font-semibold text-xl"/>
           </form>
+          <p className="text-red-500 font-medium text-lg my-3">{errorMessage}</p>
           <div className="mt-4">
              <p className="font-medium text-center">New User ? <Link to={'/register'} className="underline text-lg font-semibold"> Create a account!</Link></p>
              <div className="divider">OR</div>

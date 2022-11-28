@@ -5,10 +5,11 @@ import AddProduct from '../AddProduct/AddProduct';
 import AllSellers from '../AllSellers/AllSellers';
 import MyOrders from '../MyOrders/MyOrders';
 
+
 const Dashboard = () => {
     const {user} = useContext(AuthProvider)
     const [userLevel] = useAdmin(user?.email)
-    console.log(userLevel.accountMode);
+    // console.log(userLevel.accountMode);
     return (
         <div>
             {

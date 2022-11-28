@@ -4,6 +4,8 @@ import { BsTrash } from "react-icons/bs";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { AuthProvider } from "../../../context/AuthConText";
+import swal from 'sweetalert';
+
 
 const AllSellers = () => {
 
@@ -42,6 +44,14 @@ const AllSellers = () => {
   }
 
   const deleteSeller = id=>{
+
+    fetch(`${process.env.REACT_APP_url}/sellers/${id}`,{
+        method : 'DELETE',
+    })
+    .then(res => res.json())
+    .then(data =>{
+        console.log(data);
+    })
     console.log(id);
   }
 
