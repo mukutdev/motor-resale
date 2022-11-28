@@ -11,7 +11,7 @@ const BookingModal = ({carData , setCarData , refetch }) => {
     const [displayModal , setDisplayModal] = useState('')
     // const {carName , salePrice ,categoryId , seller } = carData  || {}
 
-    console.log(carData);
+    // console.log(carData);
   
 // On clicking the Book now button, a form in a modal will popup with the logged-in user name and email address, item name, and price(item name, price, and user information will not be editable) by default. You will give your phone number and meeting location, and lastly, there will be a submit button. After clicking the submit button, you will have to inform the buyer with a modal/toast that the item is booked.
 

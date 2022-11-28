@@ -15,12 +15,12 @@ const Advertised = () => {
         },
       })
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setProducts(res.data);
       });
   }, []);
 
-  console.log(products);
+//   console.log(products);
   return (
     <section>
         {
