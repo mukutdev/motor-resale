@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BiMap, BiDollarCircle, BiUserCircle } from "react-icons/bi";
 import { FaCar } from "react-icons/fa";
 import { BsCalendarDate } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
+import { useAdmin } from "../../Hooks/useAdmin";
+import { AuthProvider } from "../../context/AuthConText";
+import { Link } from "react-router-dom";
+// import BookingModal from "../../pages/Home/Categories/BookingModal/BookingModal";
 
 const SingleCar = ({ carInfo , setCarData }) => {
 
+  const {user} = useContext(AuthProvider)
+  const [userLevel] = useAdmin(user?.email)
     
-
   const {
     carName,
     img,
@@ -86,15 +91,21 @@ const SingleCar = ({ carInfo , setCarData }) => {
         <p className="text-lg font-semibold mt-4">
           Seller Contact : {sellerNo}
         </p>
-       
-        <label
+         {
+          userLevel.accountMode === 'buyer' && user?.email ? <label
           onClick={()=> setCarData(carInfo)}
           htmlFor="booking-modal"
           className="btn bg-yellow-400 mt-6 hover:text-white border-0 text-lg text-slate-900"
         >
           Book Now
-        </label>
+        </label> : user?.email ? <div className="flex flex-col justify-center mt-3">
+        <h2 className="text-center text-xl font-medium mt-5">{`You are ${userLevel.accountMode} booking option now only for buyer`}</h2>
+        <Link className="btn bg-yellow-400 mt-6 hover:text-white border-0 text-lg text-slate-900" to={'/dashboard'}>Go To Dashboard</Link>
+        </div> : <div className=" mt-5"><Link className="btn bg-yellow-400 mt-3 hover:text-white border-0 text-lg text-slate-900" to={'/login'}>For Booking , Login Please</Link></div>
+         }   
+        
       </div>
+     
     </div>
   );
 };

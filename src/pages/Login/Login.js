@@ -67,11 +67,11 @@ const Login = () => {
         <section className="bg-slate-600 h-screen">
       <div className="absolute h-full flex flex-col justify-center items-center left-0 right-0 top-0 bottom-0">
         <div>
-          <img
+         <Link to={'/'}> <img
             src="https://i.ibb.co/Vpp9J31/logo-auto-parts.png"
             className="h-9"
             alt=""
-          />
+          /></Link>
         </div>
         <div className="bg-base-100 md:w-[400px] mt-10 p-6 md:mx-0 mx-4">
           <h2 className="text-center text-2xl font-bold">Login</h2>
