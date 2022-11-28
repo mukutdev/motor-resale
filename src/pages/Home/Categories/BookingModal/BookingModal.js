@@ -1,29 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AuthProvider } from "../../../../context/AuthConText";
 
-const BookingModal = ({carData , setCarData , refetch}) => {
+const BookingModal = ({carData , setCarData , refetch }) => {
 
     const {user} = useContext(AuthProvider)
     const {register , handleSubmit , formState: { errors }} = useForm()
-    const {carName , salePrice ,categoryId , seller } = carData
 
-    // console.log(carData);
+    const [displayModal , setDisplayModal] = useState('')
+    // const {carName , salePrice ,categoryId , seller } = carData  || {}
+
+    console.log(carData);
   
 // On clicking the Book now button, a form in a modal will popup with the logged-in user name and email address, item name, and price(item name, price, and user information will not be editable) by default. You will give your phone number and meeting location, and lastly, there will be a submit button. After clicking the submit button, you will have to inform the buyer with a modal/toast that the item is booked.
+
 
 const handleBooking = data =>{
   
     const bookingData = {
-        carName,
+        carName : carData.carName,
         customer : user?.displayName,
         cusEmail : user?.email,
-        salePrice,
+        salePrice : carData.salePrice,
         phone : data.phone,
         location : data.meetingLocation,
-        seller,
-        catId : categoryId
+        seller : carData.seller,
+        catId : carData.categoryId,
+        image : carData.img
     }
 
     // posting booking data to db
@@ -41,7 +45,8 @@ const handleBooking = data =>{
         console.log(data);
         // alert('success')
         toast.success('Booking created successfully')
-        // setCarData(null)
+        setCarData(carData)
+        setDisplayModal('hidden')
         // setTreatment(null)
         refetch()
       }else{
@@ -49,17 +54,13 @@ const handleBooking = data =>{
       }
     })
     .catch(err => console.log(err))
-
-
-
-
     
 }
 
   return (
     <>
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
-      <div className="modal">
+      <div className={`modal ${displayModal}`}>
         <div className="modal-box relative">
           <label
             htmlFor="booking-modal"
@@ -68,7 +69,7 @@ const handleBooking = data =>{
             ✕
           </label>
           <h3 className="text-lg font-bold">
-            {carName}
+            {carData.carName}
           </h3>
           <p className="py-4">
           <form onSubmit={handleSubmit(handleBooking)}>
@@ -89,7 +90,7 @@ const handleBooking = data =>{
             />
             <input
               type="text"
-              defaultValue={salePrice}
+              defaultValue={carData.salePrice}
               readOnly
               {...register("salePrice")}
               className="border-0 w-full outline-none bg-gray-300 px-3 py-3 mt-3 text-slate-900 placeholder-gray-500"

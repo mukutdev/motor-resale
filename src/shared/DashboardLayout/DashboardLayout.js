@@ -5,10 +5,9 @@ import { useAdmin } from "../../Hooks/useAdmin";
 import Header from "../Header/Header";
 
 const DashboardLayout = () => {
-  const {user} = useContext(AuthProvider)  
-  const [userLevel ] = useAdmin(user?.email)
+  const { user } = useContext(AuthProvider);
+  const [userLevel] = useAdmin(user?.email);
   // console.log(userLevel);
-
 
   return (
     <div>
@@ -21,36 +20,36 @@ const DashboardLayout = () => {
         <div className="drawer-side">
           <label htmlFor="dashboardDrawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-            {
-                userLevel?.accountMode === 'admin' && <>
-                 <li>
-              <Link
-                className="text-xl mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white"
-                to={"/dashboard/allsellers"}
-              >
-                All Sellers
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="text-xl mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white"
-                to={"/dashboard/allbuyers"}
-              >
-                All Buyers
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="text-xl mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white"
-                to={"/dashboard/report"}
-              >
-                Reported Order
-              </Link>
-            </li>
-                </>
-            }
-            {
-                userLevel?.accountMode === 'buyer' && <li>
+            {userLevel?.accountMode === "admin" && (
+              <>
+                <li>
+                  <Link
+                    className="text-xl mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white"
+                    to={"/dashboard/allsellers"}
+                  >
+                    All Sellers
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-xl mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white"
+                    to={"/dashboard/allbuyers"}
+                  >
+                    All Buyers
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-xl mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white"
+                    to={"/dashboard/report"}
+                  >
+                    Reported Order
+                  </Link>
+                </li>
+              </>
+            )}
+            {userLevel?.accountMode === "buyer" && (
+              <li>
                 <Link
                   className="text-xl mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white"
                   to={"/dashboard/myorders"}
@@ -58,22 +57,28 @@ const DashboardLayout = () => {
                   My Orders
                 </Link>
               </li>
-            }
-           
-           {
-            userLevel?.accountMode === 'seller' && <> <li>
-           
-            <Link
-              className="text-xl mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white"
-              to={"/dashboard/addproduct"}
-            >
-              Add Product
-            </Link>
-          </li>
-         </>
-           }
-          
-           
+            )}
+
+            {userLevel?.accountMode === "seller" && (
+              <>
+                <li>
+                  <Link
+                    className="text-xl mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white"
+                    to={"/dashboard/addproduct"}
+                  >
+                    Add Car
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-xl mx-2 rounded-lg font-medium  hover:bg-yellow-400 hover:text-white"
+                    to={"/dashboard/myproducts"}
+                  >
+                    My Products
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

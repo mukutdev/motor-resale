@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider } from '../../context/AuthConText';
 import { useAdmin } from '../../Hooks/useAdmin';
+import Spinner from '../../shared/Spinner/Spinner';
 
 const AdminRoute = ({children}) => {
 
@@ -9,10 +10,10 @@ const AdminRoute = ({children}) => {
     const [userLevel , isAdminLoading] = useAdmin(user?.email)
     const location = useLocation()
 
-    if(loading ){
-        return <h2>Loading.......</h2>
+    if(loading || isAdminLoading){
+        return <Spinner/>
     }
-   if(user){
+   if(user && userLevel){
      return children;
    }
 
