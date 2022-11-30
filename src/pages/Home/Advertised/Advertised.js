@@ -9,7 +9,7 @@ const Advertised = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_url}/allCars/advertise`, {
+      .get(`https://resale-server-mukutdev.vercel.app/allCars/advertise`, {
         headers: {
           authorization: `bearer ${localStorage.getItem("resaleToken")}`,
         },

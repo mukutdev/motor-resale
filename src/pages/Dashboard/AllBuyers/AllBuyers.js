@@ -14,7 +14,7 @@ const AllBuyers = () => {
   } = useQuery({
     queryKey: ["buyers"],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_url}/buyers`, {
+      const res = await fetch(`https://resale-server-mukutdev.vercel.app/buyers`, {
         headers: {
           authorization: `bearer ${localStorage.getItem("resaleToken")}`,
         },
@@ -26,7 +26,7 @@ const AllBuyers = () => {
 
   const deletebuyer = id => {
     console.log(id);
-    fetch(`${process.env.REACT_APP_url}/buyers/${id}`, {
+    fetch(`https://resale-server-mukutdev.vercel.app/buyers/${id}`, {
       method: "DELETE",
     })
       .then(res => res.json())

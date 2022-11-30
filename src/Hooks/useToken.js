@@ -5,7 +5,7 @@ export const useToken = email => {
 
   useEffect(() => {
    if(email){
-    fetch(`${process.env.REACT_APP_url}/jwt?email=${email}`)
+    fetch(`https://resale-server-mukutdev.vercel.app/jwt?email=${email}`)
     .then(res => res.json())
     .then(data => {
       if (data.accessToken) {

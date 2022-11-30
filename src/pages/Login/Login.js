@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FcGoogle } from 'react-icons/fc';
-import { AuthProvider } from '../../context/AuthConText';
 import toast from 'react-hot-toast';
+import { FcGoogle } from 'react-icons/fc';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthProvider } from '../../context/AuthConText';
 import { useToken } from '../../Hooks/useToken';
 
 const Login = () => {
@@ -52,7 +52,7 @@ const Login = () => {
 
     const saveUserToDb = (name , email)=>{
       const user = {name , email , accountMode : 'buyer' , verified : false}
-      fetch(`${process.env.REACT_APP_url}/users/${email}`, {
+      fetch(`https://resale-server-mukutdev.vercel.app/users/${email}`, {
         method : 'PUT',
         headers : { 'Content-Type': 'application/json'},
         body: JSON.stringify(user)

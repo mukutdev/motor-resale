@@ -47,7 +47,7 @@ const Register = () => {
 
     const saveUserToDb = (name , email , accountMode )=>{
       const user = {name , email , accountMode , verified : false}
-      fetch(`${process.env.REACT_APP_url}/users/${email}`, {
+      fetch(`https://resale-server-mukutdev.vercel.app/users/${email}`, {
         method : 'PUT',
         headers : { 'Content-Type': 'application/json'},
         body: JSON.stringify(user)

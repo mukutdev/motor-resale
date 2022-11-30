@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 export const useAdmin = email =>{
 
@@ -7,7 +7,7 @@ export const useAdmin = email =>{
     const [isAdminLoading , setIsAdminLoading] = useState(true)
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_url}/users/role/${email}`)
+        fetch(`https://resale-server-mukutdev.vercel.app/users/role/${email}`)
           .then(res => res.json())
           .then(data => {
             // console.log(data);

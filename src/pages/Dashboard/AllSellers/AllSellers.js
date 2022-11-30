@@ -4,7 +4,6 @@ import { BsTrash } from "react-icons/bs";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { AuthProvider } from "../../../context/AuthConText";
-import swal from 'sweetalert';
 
 
 const AllSellers = () => {
@@ -17,7 +16,7 @@ const AllSellers = () => {
   } = useQuery({
     queryKey: ["sellers"],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_url}/sellers`,{
+      const res = await fetch(`https://resale-server-mukutdev.vercel.app/sellers`,{
         headers :{
             authorization: `bearer ${localStorage.getItem('resaleToken')}`
         }
@@ -28,7 +27,7 @@ const AllSellers = () => {
   });
 
   const verifySeller = id=>{
-        fetch(`${process.env.REACT_APP_url}/sellers/verified/${id}`,{
+        fetch(`https://resale-server-mukutdev.vercel.app/sellers/verified/${id}`,{
             method : 'PUT',
             headers :{
                 authorization : `bearer ${localStorage.getItem('resaleToken')}`
@@ -45,7 +44,7 @@ const AllSellers = () => {
 
   const deleteSeller = id=>{
 
-    fetch(`${process.env.REACT_APP_url}/sellers/${id}`,{
+    fetch(`https://resale-server-mukutdev.vercel.app/sellers/${id}`,{
         method : 'DELETE',
     })
     .then(res => res.json())

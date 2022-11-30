@@ -15,14 +15,14 @@ const MyOrders = () => {
 
   console.log(userLevel);
 
-  const url = `${process.env.REACT_APP_url}/bookings?email=${user?.email}`;
+  const url = `https://resale-server-mukutdev.vercel.app/bookings?email=${user?.email}`;
   const { data: bookings = [] } = useQuery({
     queryKey: ["bookings", user?.email],
     queryFn: async () => {
       const res = await fetch(url, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("resaleToken")}`,
-        },
+        // headers: {
+        //   authorization: `bearer ${localStorage.getItem("resaleToken")}`,
+        // },
       });
       const data = res.json();
       return data;

@@ -14,7 +14,7 @@ const Category = () => {
     const {data : cars = [] , isLoading , refetch} = useQuery({
         queryKey : ['categories'],
         queryFn : async ()=>{
-            const res = await fetch(`${process.env.REACT_APP_url}/categories/${id}`)
+            const res = await fetch(`https://resale-server-mukutdev.vercel.app/categories/${id}`)
             const data = await res.json()
             return data
         }

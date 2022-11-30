@@ -1,9 +1,9 @@
-import React, { useContext  } from "react";
+import { format } from 'date-fns';
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { AuthProvider } from "../../../context/AuthConText";
-import { format } from 'date-fns'
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { AuthProvider } from "../../../context/AuthConText";
 import { useAdmin } from "../../../Hooks/useAdmin";
 
 const AddProduct = () => {
@@ -67,7 +67,7 @@ const AddProduct = () => {
                 email : user?.email
              
             }
-            fetch(`${process.env.REACT_APP_url}/allcars` , {
+            fetch(`https://resale-server-mukutdev.vercel.app/allcars` , {
                 method : 'POST',
                 headers :{
                     'content-type' : 'application/json',

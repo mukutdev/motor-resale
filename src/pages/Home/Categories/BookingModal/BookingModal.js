@@ -32,7 +32,7 @@ const handleBooking = data =>{
 
     // posting booking data to db
 
-    fetch('http://localhost:5000/bookings' , {
+    fetch('https://resale-server-mukutdev.vercel.app/bookings' , {
       method: 'POST',
       headers :{
         'content-type': 'application/json'
@@ -48,7 +48,7 @@ const handleBooking = data =>{
         setCarData(carData)
         setDisplayModal('hidden')
         // setTreatment(null)
-        refetch()
+        // refetch()
       }else{
         toast.error(data.message)
       }

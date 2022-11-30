@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { AuthProvider } from "../../../context/AuthConText";
-import { BsTrash } from "react-icons/bs";
-import { useAdmin } from "../../../Hooks/useAdmin";
-import { Link, useNavigate } from "react-router-dom";
-import { useQuery } from "react-query";
 import toast from "react-hot-toast";
+import { BsTrash } from "react-icons/bs";
+import { useQuery } from "react-query";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthProvider } from "../../../context/AuthConText";
+import { useAdmin } from "../../../Hooks/useAdmin";
 
 const MyProduct = () => {
   const { user } = useContext(AuthProvider);
@@ -14,7 +14,7 @@ const MyProduct = () => {
   const { data: products = [] , refetch } = useQuery({
     queryKey: ["allCars", user?.email],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_url}/allCars?email=${user?.email}`, {
+      const res = await fetch(`https://resale-server-mukutdev.vercel.app/allCars?email=${user?.email}`, {
         headers: {
           authorization: `bearer ${localStorage.getItem("resaleToken")}`,
         },
@@ -26,7 +26,7 @@ const MyProduct = () => {
 
   const makeAdvertise = (id , carName) => {
     console.log(id);
-        fetch(`${process.env.REACT_APP_url}/allCars/advertise/${id}`,{
+        fetch(`https://resale-server-mukutdev.vercel.app/allCars/advertise/${id}`,{
             method: 'PUT',
             headers :{
                 authorization : `bearer ${localStorage.getItem('resaleToken')}`
@@ -47,7 +47,7 @@ const MyProduct = () => {
 
 //   useEffect(() => {
 //     axios
-//       .get(`${process.env.REACT_APP_url}/allCars?email=${user?.email}`, {
+//       .get(`https://resale-server-mukutdev.vercel.app/allCars?email=${user?.email}`, {
 //         headers: {
 //           authorization: `bearer ${localStorage.getItem("resaleToken")}`,
 //         },
@@ -69,7 +69,7 @@ const MyProduct = () => {
 
   const deleteCar = id => {
 
-    fetch(`${process.env.REACT_APP_url}/allCars/${id}`,{
+    fetch(`https://resale-server-mukutdev.vercel.app/allCars/${id}`,{
       method : "DELETE",
     })
     .then(res => res.json())
