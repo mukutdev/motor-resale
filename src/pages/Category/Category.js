@@ -2,6 +2,7 @@ import React, { useState }  from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import BgElement from '../../shared/BgElement/BgElement';
+import ConfirmationModal from '../../shared/ConfirmationModal/ConfirmationModal';
 import SingleCar from '../../shared/SingleCar/SingleCar';
 import BookingModal from '../Home/Categories/BookingModal/BookingModal';
 
@@ -28,12 +29,13 @@ const Category = () => {
         <section>
                 <BgElement content="Cars"></BgElement>
             <div className='container mx-auto'>
-            <div className='grid md:grid-cols-2 justify-between gap-20 my-24 md:mx-28'>
+            <div className='grid md:grid-cols-2 justify-between gap-10 my-24 '>
             {
                 cars.map(car => <SingleCar key={car._id} carInfo={car} setCarData={setCarData}></SingleCar>)
             }
             </div>
             <BookingModal carData={carData} setCarData={setCarData} refetch={refetch}/>
+            <ConfirmationModal carData={carData} setCarData={setCarData}/>
             </div>
            
         </section>

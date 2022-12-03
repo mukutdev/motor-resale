@@ -22,7 +22,7 @@ const Categories = () => {
     return (
         <section className='mt-16'>
             <div className='container mx-auto '>
-             <div className='md:w-5/6 mx-auto md:px-0 px-4'>
+             <div className='md:px-0 px-4'>
              <h2 className='text-3xl font-bold'>Popular Categories</h2>
              <div className='h-2 w-14 mt-2 bg-slate-800'></div>
              <div className='mt-16 grid md:grid-cols-3 justify-between gap-5 '>

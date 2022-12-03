@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AuthProvider } from "../../../../context/AuthConText";
@@ -8,7 +8,7 @@ const BookingModal = ({carData , setCarData , refetch }) => {
     const {user} = useContext(AuthProvider)
     const {register , handleSubmit , formState: { errors }} = useForm()
 
-    const [displayModal , setDisplayModal] = useState('')
+    // const [displayModal , setDisplayModal] = useState('')
     // const {carName , salePrice ,categoryId , seller } = carData  || {}
 
     // console.log(carData);
@@ -30,7 +30,9 @@ const handleBooking = data =>{
         image : carData.img
     }
 
+    // setDisplayModal('block')
     // posting booking data to db
+
 
     fetch('https://resale-server-mukutdev.vercel.app/bookings' , {
       method: 'POST',
@@ -46,7 +48,7 @@ const handleBooking = data =>{
         // alert('success')
         toast.success('Booking created successfully')
         setCarData(carData)
-        setDisplayModal('hidden')
+        // setDisplayModal('hidden')
         // setTreatment(null)
         // refetch()
       }else{
@@ -54,13 +56,14 @@ const handleBooking = data =>{
       }
     })
     .catch(err => console.log(err))
+
     
 }
 
   return (
     <>
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
-      <div className={`modal ${displayModal}`}>
+      <div className={`modal`}>
         <div className="modal-box relative">
           <label
             htmlFor="booking-modal"

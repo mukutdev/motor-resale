@@ -3,16 +3,15 @@ import { BiMap, BiDollarCircle, BiUserCircle } from "react-icons/bi";
 import { FaCar } from "react-icons/fa";
 import { BsCalendarDate } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
+import { FiFlag } from "react-icons/fi";
 import { useAdmin } from "../../Hooks/useAdmin";
 import { AuthProvider } from "../../context/AuthConText";
 import { Link } from "react-router-dom";
-// import BookingModal from "../../pages/Home/Categories/BookingModal/BookingModal";
 
-const SingleCar = ({ carInfo , setCarData }) => {
+const SingleCar = ({ carInfo, setCarData }) => {
+  const { user } = useContext(AuthProvider);
+  const [userLevel] = useAdmin(user?.email);
 
-  const {user} = useContext(AuthProvider)
-  const [userLevel] = useAdmin(user?.email)
-    
   const {
     carName,
     img,
@@ -91,21 +90,44 @@ const SingleCar = ({ carInfo , setCarData }) => {
         <p className="text-lg font-semibold mt-4">
           Seller Contact : {sellerNo}
         </p>
-         {
-          userLevel.accountMode === 'buyer' && user?.email ? <label
-          onClick={()=> setCarData(carInfo)}
-          htmlFor="booking-modal"
-          className="btn bg-yellow-400 mt-6 hover:text-white border-0 text-lg text-slate-900"
-        >
-          Book Now
-        </label> : user?.email ? <div className="flex flex-col justify-center mt-3">
-        <h2 className="text-center text-xl font-medium mt-5">{`You are ${userLevel.accountMode} booking option now only for buyer`}</h2>
-        <Link className="btn bg-yellow-400 mt-6 hover:text-white border-0 text-lg text-slate-900" to={'/dashboard'}>Go To Dashboard</Link>
-        </div> : <div className=" mt-5"><Link className="btn bg-yellow-400 mt-3 hover:text-white border-0 text-lg text-slate-900" to={'/login'}>For Booking , Login Please</Link></div>
-         }   
-        
+        {userLevel.accountMode === "buyer" && user?.email ? (
+          <div className="flex justify-between">
+            <label
+              onClick={() => setCarData(carInfo)}
+              htmlFor="booking-modal"
+              className="btn bg-yellow-400 mt-6 hover:text-white border-0 text-lg text-slate-900"
+            >
+              Book Now
+            </label>
+          
+            <label className="tooltip tooltip-right mt-5 cursor-pointer flex items-center " data-tip="Report to admin" onClick={() => setCarData(carInfo)}  htmlFor="confirmModal">
+            <FiFlag className="mx-auto flex items-center text-2xl text-white bg-red-500 rounded-md h-10 w-10 p-2" />
+            </label>
+          </div>
+          // <button className="text-white bg-red-500 p-2 rounded-md ">
+              
+          // </button>
+        ) : user?.email ? (
+          <div className="flex flex-col justify-center mt-3">
+            <h2 className="text-center text-xl font-medium mt-5">{`You are ${userLevel.accountMode} booking option now only for buyer`}</h2>
+            <Link
+              className="btn bg-yellow-400 mt-6 hover:text-white border-0 text-lg text-slate-900"
+              to={"/dashboard"}
+            >
+              Go To Dashboard
+            </Link>
+          </div>
+        ) : (
+          <div className=" mt-5">
+            <Link
+              className="btn bg-yellow-400 mt-3 hover:text-white border-0 text-lg text-slate-900"
+              to={"/login"}
+            >
+              For Booking , Login Please
+            </Link>
+          </div>
+        )}
       </div>
-     
     </div>
   );
 };
