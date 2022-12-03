@@ -36,8 +36,6 @@ const MyOrders = () => {
     return navigate("/");
   }
 
- 
-
   return (
     <section className="mt-10 md:mx-16 mx-2">
       {bookings?.length > 0 ? (
@@ -83,9 +81,16 @@ const MyOrders = () => {
                           ${booking.salePrice}
                         </td>
                         <th>
-                          <button className="btn btn-primary btn-xs">
-                            Pay Now
-                          </button>
+                          {booking?.salePrice && !booking?.paid && (
+                            <Link to={`/dashboard/payment/${booking?._id}`}
+                            
+                            className="btn btn-primary btn-xs">
+                              Pay Now
+                            </Link>
+                          )}
+                          {booking?.salePrice && booking.paid && (
+                            <span className="btn btn-success btn-xs px-3">Paid</span>
+                          )}
                         </th>
                       </tr>
                     );
@@ -107,15 +112,13 @@ const MyOrders = () => {
       ) : (
         <>
           <div className="my-14 w-96 mx-auto bg-gray-100 py-9 px-5">
-            <h2 className="text-center text-2xl">
-              Your Cart is empty
-            </h2>
+            <h2 className="text-center text-2xl">Your Cart is empty</h2>
             <Link
               className="btn border-0 rounded-md flex justify-center btn-primary my-5"
               to={"/"}
             >
               {" "}
-             Book a car{" "}
+              Book a car{" "}
             </Link>
           </div>
         </>

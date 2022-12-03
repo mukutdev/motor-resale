@@ -7,6 +7,7 @@ import AllSellers from "../../pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import MyOrders from "../../pages/Dashboard/MyOrders/MyOrders";
 import MyProduct from "../../pages/Dashboard/MyProduct/MyProduct";
+import Payment from "../../pages/Dashboard/Payment/Payment";
 import ReportedItems from "../../pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
                 path:'/dashboard/report',
                 element : <AdminRoute><ReportedItems/></AdminRoute>
             },
+            {
+                path:'/dashboard/payment/:id',
+                element : <AdminRoute> <Payment/> </AdminRoute>
+            }
         ]
     },
     
