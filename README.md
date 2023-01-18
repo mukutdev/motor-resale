@@ -23,9 +23,3 @@ Buy and sell car easily by just one click , seller can add car for sell and buye
 **Server:** Express js
 
 **Database:** MongoDb
-
-## Admin login details
-https://car-service-4dd38.web.app/login , <br>
-
-adminEmail : admin@resale.com <br>
-adminPassword : 123456
