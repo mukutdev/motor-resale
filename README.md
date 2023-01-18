@@ -2,12 +2,6 @@
 # Motor - Buy | Sell Car
 
 Buy and sell car easily by just one click , seller can add car for sell and buyer can purchase it easily.Dynamic listing and buyer can easily pay using stripe.
-## Live site link
-
-https://car-service-4dd38.web.app/
-
-
-
 
 ## Features
 
